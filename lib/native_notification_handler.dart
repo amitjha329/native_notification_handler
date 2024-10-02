@@ -4,7 +4,7 @@ import 'native_notification_handler_platform_interface.dart';
 
 class NativeNotificationHandler {
   static const MethodChannel _channel =
-      MethodChannel('com.yourcompany.notification_handler');
+      MethodChannel('com.yashjha.native_notification_handler');
 
   static Future<String?> get platformVersion async {
     final String? version = await _channel.invokeMethod('getPlatformVersion');

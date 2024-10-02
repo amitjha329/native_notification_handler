@@ -24,3 +24,7 @@
 ## 0.0.5
 
 * Added Missing Result Import
+
+## 0.0.6
+
+* Added Default Icon

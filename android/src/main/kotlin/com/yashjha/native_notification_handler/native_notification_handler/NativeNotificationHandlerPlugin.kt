@@ -11,7 +11,7 @@ import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
-import io.flutter.plugin.common.MethodChannel.Result
+
 
 /** NativeNotificationHandlerPlugin */
 class NativeNotificationHandlerPlugin : FlutterPlugin, MethodCallHandler {
@@ -94,5 +94,26 @@ class NativeNotificationHandlerPlugin : FlutterPlugin, MethodCallHandler {
 
     private fun getLaunchIntent(context: Context): Intent? {
         return context.packageManager.getLaunchIntentForPackage(context.packageName)
+    }
+
+    private fun setSmallIcon(
+        context: Context,
+        icon: String,
+        builder: Notification.Builder
+    ) {
+        if (icon.isNotEmpty()) {
+            builder.setSmallIcon(R.drawable.default_icon)
+        } else {
+            val sharedPreferences =
+                context.getSharedPreferences(SHARED_PREFERENCES_KEY, Context.MODE_PRIVATE)
+            val defaultIcon = sharedPreferences.getString(DEFAULT_ICON, null)
+            if (StringUtils.isNullOrEmpty(defaultIcon)) {
+                // for backwards compatibility: this is for handling the old way references to the icon used
+                // to be kept but should be removed in future
+                builder.setSmallIcon(notificationDetails.iconResourceId)
+            } else {
+                builder.setSmallIcon(getDrawableResourceId(context, defaultIcon))
+            }
+        }
     }
 }
