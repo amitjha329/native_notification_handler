@@ -20,3 +20,7 @@
 * Updated Android Logic to autedetect MainActivity::class.java
 * Updated README.md
 * Updated Pubspec.yaml
+
+## 0.0.5
+
+* Added Missing Result Import
