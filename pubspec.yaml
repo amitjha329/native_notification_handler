@@ -3,7 +3,7 @@ description: "A Basic Plugin to Android Local Notificationa and Soon to be Expec
 version: 0.0.1
 homepage: https://yashjha.dev/
 license: MIT
-repository: https://github.com/amitjha329/notification_handler.git
+repository: https://github.com/amitjha329/native_notification_handler.git
 
 environment:
   sdk: ^3.5.3
