@@ -1,6 +1,6 @@
 name: native_notification_handler
 description: "A Basic Plugin to Android Local Notificationa and Soon to be Expected Other Platforms"
-version: 0.0.6
+version: 0.0.7
 homepage: https://yashjha.dev/
 license: MIT
 repository: https://github.com/amitjha329/native_notification_handler.git

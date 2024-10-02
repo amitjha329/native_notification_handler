@@ -28,3 +28,7 @@
 ## 0.0.6
 
 * Added Default Icon
+
+## 0.0.7
+
+* Resolved Issue Where Method Channel Was Wrong
