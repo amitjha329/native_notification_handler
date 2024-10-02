@@ -1,0 +1,35 @@
+name: native_notification_handler
+description: "A Basic Plugin to Android Local Notificationa and Soon to be Expected Other Platforms"
+version: 0.0.1
+homepage: https://yashjha.dev/
+license: MIT
+repository: https://github.com/amitjha329/notification_handler.git
+
+environment:
+  sdk: ^3.5.3
+  flutter: '>=3.3.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  plugin_platform_interface: ^2.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  plugin:
+    platforms:
+      android:
+        package: com.yashjha.native_notification_handler.native_notification_handler
+        pluginClass: NativeNotificationHandlerPlugin
+      ios:
+        pluginClass: NativeNotificationHandlerPlugin
+      linux:
+        pluginClass: NativeNotificationHandlerPlugin
+      macos:
+        pluginClass: NativeNotificationHandlerPlugin
+      windows:
+        pluginClass: NativeNotificationHandlerPluginCApi
