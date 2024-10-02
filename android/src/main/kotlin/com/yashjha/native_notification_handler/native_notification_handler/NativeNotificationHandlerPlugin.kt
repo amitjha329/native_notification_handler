@@ -7,12 +7,11 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.os.Build
-
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
-import io.flutter.plugin.common.MethodChannel.Result
+
 
 /** NativeNotificationHandlerPlugin */
 class NativeNotificationHandlerPlugin : FlutterPlugin, MethodCallHandler {
@@ -74,14 +73,14 @@ class NativeNotificationHandlerPlugin : FlutterPlugin, MethodCallHandler {
     }
 
     private fun showNotification(id: Int, title: String, body: String) {
-        val intent = Intent(context, MainActivity::class.java).apply {
+        val intent = getLaunchIntent(context)?.apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         }
         val pendingIntent: PendingIntent =
             PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_IMMUTABLE)
 
         val builder = Notification.Builder(context, "channel_id")
-            .setSmallIcon(R.drawable.notification_icon) // Replace with your notification icon
+//            .setSmallIcon(R.drawable.notification_icon) // Replace with your notification icon
             .setContentTitle(title)
             .setContentText(body)
             .setPriority(Notification.PRIORITY_DEFAULT)
@@ -91,5 +90,9 @@ class NativeNotificationHandlerPlugin : FlutterPlugin, MethodCallHandler {
         with(context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager) {
             notify(id, builder.build())
         }
+    }
+
+    private fun getLaunchIntent(context: Context): Intent? {
+        return context.packageManager.getLaunchIntentForPackage(context.packageName)
     }
 }
